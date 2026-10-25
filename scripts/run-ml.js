@@ -1,0 +1,12 @@
+import {spawn} from 'node:child_process';
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const python=process.env.PYTHON_PATH || fileURLToPath(new URL(process.platform==='win32'?'../.venv/Scripts/python.exe':'../.venv/bin/python',import.meta.url));
+const script=process.argv[2];
+const scripts={train:'ml/train.py',evaluate:'ml/evaluate.py','download-additional':'dataset/scripts/download_additional.py','prepare-additional':'dataset/scripts/prepare_additional.py'};
+if(!scripts[script])throw new Error('Unknown ML command.');
+if(!existsSync(python))throw new Error('Create the Python virtual environment and install ml/requirements.txt first.');
+const child=spawn(python,[scripts[script],...process.argv.slice(3)],{cwd:root,stdio:'inherit',windowsHide:true});
+child.on('error',()=>{console.error('Could not start local Python. Check PYTHON_PATH.');process.exitCode=1;});
+child.on('exit',code=>{process.exitCode=code || 0;if(code===0 && script==='evaluate'){const report=spawn(process.execPath,['evaluation/scripts/report.js',...(process.argv.includes('--results-dir')?['--results-dir',process.argv[process.argv.indexOf('--results-dir')+1]]:[])],{cwd:root,stdio:'inherit',windowsHide:true});report.on('exit',c=>{process.exitCode=c || 0;});}});

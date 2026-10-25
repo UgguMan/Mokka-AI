@@ -1,0 +1,3 @@
+import {useEffect,useState} from 'react';
+import {api,errorMessage} from './api';
+export function useResource(url){const [data,setData]=useState(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[version,setVersion]=useState(0);useEffect(()=>{const controller=new AbortController();setLoading(true);setError('');api.get(url,{signal:controller.signal}).then(r=>setData(r.data)).catch(e=>{if(e.code!=='ERR_CANCELED')setError(errorMessage(e));}).finally(()=>{if(!controller.signal.aborted)setLoading(false);});return()=>controller.abort();},[url,version]);return {data,error,loading,reload:()=>setVersion(v=>v+1)};}

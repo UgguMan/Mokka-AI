@@ -1,0 +1,11 @@
+dataset/PlantDoc
+dataset/downloads
+dataset/additional
+ml/artifacts
+ml/cache
+.venv
+evaluation
+.local
+.env
+server/tests
+client/src/*.test.jsx

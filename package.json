@@ -1,0 +1,39 @@
+{
+  "name": "mokka-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "check:setup": "node scripts/check-setup.js",
+    "check:atlas": "node scripts/check-atlas.js",
+    "check:gemini": "node scripts/check-gemini.js",
+    "datasets:download": "node scripts/run-ml.js download-additional",
+    "datasets:prepare": "node scripts/run-ml.js prepare-additional",
+    "train:combined": "node scripts/run-ml.js train --additional",
+    "train:model": "node scripts/run-ml.js train",
+    "evaluate:model": "node scripts/run-ml.js evaluate",
+    "db:windows": "powershell -NoProfile -File scripts/start-local-db.ps1",
+    "dev": "concurrently -k -n api,web \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "test": "vitest run",
+    "taxonomy": "node dataset/scripts/buildTaxonomy.js",
+    "seed": "node server/scripts/seed.js",
+    "evaluate": "node scripts/run-ml.js evaluate",
+    "metrics": "node evaluation/scripts/report.js",
+    "start": "npm start -w server"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "concurrently": "^9.2.1",
+    "jsdom": "^26.1.0",
+    "mongodb-memory-server": "^10.2.0",
+    "supertest": "^7.1.4",
+    "vitest": "^4.1.11"
+  }
+}

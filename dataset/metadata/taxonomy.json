@@ -1,0 +1,170 @@
+[
+  {
+    "classLabel": "Apple Scab Leaf",
+    "plant": "Apple",
+    "disease": "Scab",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Apple leaf",
+    "plant": "Apple",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Apple rust leaf",
+    "plant": "Apple",
+    "disease": "Rust",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Bell_pepper leaf",
+    "plant": "Bell pepper",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Bell_pepper leaf spot",
+    "plant": "Bell pepper",
+    "disease": "Spot",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Blueberry leaf",
+    "plant": "Blueberry",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Cherry leaf",
+    "plant": "Cherry",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Corn Gray leaf spot",
+    "plant": "Corn",
+    "disease": "Gray spot",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Corn leaf blight",
+    "plant": "Corn",
+    "disease": "Blight",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Corn rust leaf",
+    "plant": "Corn",
+    "disease": "Rust",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Peach leaf",
+    "plant": "Peach",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Potato leaf early blight",
+    "plant": "Potato",
+    "disease": "Early blight",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Potato leaf late blight",
+    "plant": "Potato",
+    "disease": "Late blight",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Raspberry leaf",
+    "plant": "Raspberry",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Soyabean leaf",
+    "plant": "Soybean",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Squash Powdery mildew leaf",
+    "plant": "Squash",
+    "disease": "Powdery mildew",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Strawberry leaf",
+    "plant": "Strawberry",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Tomato Early blight leaf",
+    "plant": "Tomato",
+    "disease": "Early blight",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato Septoria leaf spot",
+    "plant": "Tomato",
+    "disease": "Septoria spot",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato leaf",
+    "plant": "Tomato",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "Tomato leaf bacterial spot",
+    "plant": "Tomato",
+    "disease": "Bacterial spot",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato leaf late blight",
+    "plant": "Tomato",
+    "disease": "Late blight",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato leaf mosaic virus",
+    "plant": "Tomato",
+    "disease": "Mosaic virus",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato leaf yellow virus",
+    "plant": "Tomato",
+    "disease": "Yellow virus",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato mold leaf",
+    "plant": "Tomato",
+    "disease": "Mold",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "Tomato two spotted spider mites leaf",
+    "plant": "Tomato",
+    "disease": "Two spotted spider mites",
+    "isHealthy": false
+  },
+  {
+    "classLabel": "grape leaf",
+    "plant": "Grape",
+    "disease": "Healthy",
+    "isHealthy": true
+  },
+  {
+    "classLabel": "grape leaf black rot",
+    "plant": "Grape",
+    "disease": "Black rot",
+    "isHealthy": false
+  }
+]

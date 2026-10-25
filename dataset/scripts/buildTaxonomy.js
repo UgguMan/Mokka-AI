@@ -1,0 +1,22 @@
+import {readdir,mkdir,writeFile,readFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const dataset=fileURLToPath(new URL('../PlantDoc/',import.meta.url));
+const folders=async split=>(await readdir(path.join(dataset,split),{withFileTypes:true})).filter(d=>d.isDirectory()).map(d=>d.name).sort();
+const [train,test]=await Promise.all([folders('train'),folders('test')]);
+if(!train.length || !test.length)throw new Error('PlantDoc train and test class folders are required.');
+if(test.some(c=>!train.includes(c)))throw new Error('Unexpected test class not in training taxonomy.');
+const plantNames=['Apple','Bell_pepper','Blueberry','Cherry','Corn','Peach','Potato','Raspberry','Soyabean','Squash','Strawberry','Tomato','grape'];
+const taxonomy=train.map(classLabel=>{
+  const prefix=plantNames.find(p=>classLabel.toLowerCase().startsWith(p.toLowerCase()));
+  if(!prefix)throw new Error(`Unknown plant in ${classLabel}. Review the normalization rules.`);
+  const plant=prefix==='Soyabean'?'Soybean':prefix==='grape'?'Grape':prefix.replaceAll('_',' ');
+  const suffix=classLabel.slice(prefix.length).replace(/leaf/gi,'').replaceAll('_',' ').replace(/\s+/g,' ').trim();
+  const disease=suffix?suffix[0].toUpperCase()+suffix.slice(1):'Healthy';
+  return {classLabel,plant,disease,isHealthy:!suffix};
+});
+await mkdir(new URL('../metadata/',import.meta.url),{recursive:true});
+await writeFile(new URL('../metadata/taxonomy.json',import.meta.url),JSON.stringify(taxonomy,null,2)+'\n');
+const license=await readFile(path.join(dataset,'LICENSE.txt'),'utf8');
+await writeFile(new URL('../metadata/PlantDoc-LICENSE.txt',import.meta.url),license);
+console.log(`Verified ${train.length} train classes and ${test.length} test classes. Taxonomy and original license written.`);

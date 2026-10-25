@@ -1,0 +1,7 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({user:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},plantName:String,diseaseName:String,classLabel:{type:String,required:true},scientificName:String,status:{type:String,enum:['healthy','disease_detected','uncertain','unsupported_plant'],required:true},modelAssessedCertainty:{type:String,enum:['low','medium','high']},userPlantName:String,userSymptoms:String,duration:String,observations:String,visualSymptoms:[String],reasoningSummary:String,recommendations:[String],model:{name:String,sdkVersion:String},imageMeta:{mimeType:String,sizeBytes:Number,originalName:String}},{timestamps:true});
+schema.index({user:1,createdAt:-1});
+schema.add({treatmentSummary:String,careSummary:String});
+schema.add({predictionSource:String,classifierAssessedCertainty:{type:String,enum:['low','medium','high']},classifier:{name:String,version:String,trainedOn:String},explanationStatus:String,explanationNotice:String,explanationRetryAfter:Number});
+schema.add({fallbackStatus:{type:String,enum:['gemini','unavailable']},geminiAssessment:{type:new mongoose.Schema({assessment:{type:String,enum:['suspected_disease','apparently_healthy','uncertain','not_a_leaf'],required:true},plantName:String,suspectedDisease:String,visualSymptoms:[String],reasoningSummary:String,treatmentSummary:String,careSummary:String},{_id:false}),default:undefined}});
+export const Analysis=mongoose.model('Analysis',schema);
